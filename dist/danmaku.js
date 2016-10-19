@@ -43,6 +43,7 @@ Danmaku = (function() {
     d.style.position = "absolute";
     d.style.color = color;
     d.style.fontSize = this.size;
+    d.style.whiteSpace = "nowrap";
     pH = parseInt($(this.el).height());
     pW = parseInt($(this.el).width());
     sH = parseInt($(d).height());

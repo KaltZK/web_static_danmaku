@@ -34,6 +34,7 @@ class Danmaku
         d.style.position = "absolute"
         d.style.color = color
         d.style.fontSize = @size
+        d.style.whiteSpace = "nowrap"
         pH = parseInt $(@el).height()
         pW = parseInt $(@el).width()
         sH = parseInt $(d).height()
