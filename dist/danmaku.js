@@ -10,11 +10,13 @@ Danmaku = (function() {
     this.amount = this.config.amount;
     this.speed = this.config.speed;
     this.size = this.config.size || "1em";
+    this.stop_flag = false;
   }
 
   Danmaku.prototype.start = function() {
     var i, pW, ref, results, self;
     self = this;
+    this.stop_flag = false;
     $(this.el).css("overflow-x", "hidden");
     pW = parseInt($(this.el).width());
     results = [];
@@ -24,6 +26,10 @@ Danmaku = (function() {
       }), Math.ceil(pW / this.speed * Math.random())));
     }
     return results;
+  };
+
+  Danmaku.prototype.stop = function() {
+    return this.stop_flag = true;
   };
 
   Danmaku.prototype.next_dammaku = function() {
@@ -54,6 +60,9 @@ Danmaku = (function() {
       if (left > -sW) {
         left -= Math.ceil(self.speed * 10);
         return d.style.left = left;
+      } else if (self.stop_flag) {
+        clearInterval(timerId);
+        return d.remove();
       } else {
         clearInterval(timerId);
         callback && callback.call(self);

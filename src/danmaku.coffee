@@ -7,16 +7,18 @@ class Danmaku
         @amount = @config.amount
         @speed = @config.speed
         @size = @config.size || "1em"
-        
+        @stop_flag = false
     start: ()->
         self = @
+        @stop_flag = false
         $(@el).css "overflow-x", "hidden"
         pW = parseInt $(@el).width()
         for [0...@amount]
             setTimeout((->
                 self.next_dammaku()
             ), Math.ceil(pW / @speed  * Math.random()) )
-
+    stop: ()->
+        @stop_flag = true
     next_dammaku: ->
         @new_dammaku(@sample(@contents), @sample(@colors), @next_dammaku)
     
@@ -45,6 +47,9 @@ class Danmaku
             if left > -sW
                 left -= Math.ceil self.speed * 10
                 d.style.left = left
+            else if self.stop_flag
+                clearInterval timerId
+                d.remove()
             else
                 clearInterval timerId
                 callback and callback.call(self)
