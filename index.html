@@ -1,0 +1,35 @@
+<!DOCTYPE HTML5>
+<html>
+	<head>
+		<meta http-equiv=Content-Type content="text/html; charset=utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+		<link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+		<link href="//cdn.bootcss.com/bootstrap-select/2.0.0-beta1/css/bootstrap-select.min.css" rel="stylesheet">
+		<link href="//cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+		<script src="//cdn.bootcss.com/jquery/3.0.0/jquery.js"></script>
+		<script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+		<script src="//cdn.bootcss.com/bootstrap-select/2.0.0-beta1/js/bootstrap-select.min.js"></script>
+        
+		<script src="../dist/danmaku.js"></script>
+	</head>
+	<body>
+        <script>
+            var dmk = new Danmaku({
+                el: "body",
+                contents: [
+                    "wwwwwwwww",
+                    function(){
+                        return "2" + "3".repeat(Math.ceil(Math.random()*15));
+                    },
+                ],
+                colors: [
+                    "black",
+                    "red",
+                ],
+                speed: 0.3,
+                amount: 150,
+            });
+            dmk.start();
+        </script>
+	</body>
+</html>
