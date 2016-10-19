@@ -1,6 +1,8 @@
 # Web Static Danmaku
 A simple text barrage lib for web page.
 
+[Here is an example.](https://kaltzk.github.io/web_static_danmaku)
+
 # Useage 
 
 ```javascript
